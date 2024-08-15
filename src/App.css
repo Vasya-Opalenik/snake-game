@@ -1,0 +1,178 @@
+/* font */
+@import url('https://fonts.googleapis.com/css2?family=New+Amsterdam&display=swap');
+/* ---- */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.wraper{
+    font-family: "New Amsterdam", sans-serif;
+}
+.conteiner{
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    max-width: 540px;
+    margin: 0 auto;
+    gap: 40px;
+}
+
+.count{
+    color: dimgray;
+    font-size: 24px;
+    font-weight: 700;
+}
+.border-game{
+    outline: 20px solid #005500;
+    position: relative;
+    background-color: rgb(41, 67, 2);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+@media screen and (max-width: 560px) {
+    .border-game{
+        outline: 10px solid #005500;
+    }
+    .count{
+        padding-left: 30px;
+    }
+}
+
+.border-game.start .start-panel{
+    background-color: rgba(139, 196, 98, 0.9);
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: dimgray;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+}
+
+.border-game.start .start-panel h1{
+    font-size: 42px;
+    font-weight: 700;
+    letter-spacing: 7px;
+}
+.border-game.start .start-panel p{
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 3px;
+}
+.border-game.start .start-panel p span{
+    font-weight: 700;
+}
+
+.marking-cube.green{
+    background-color: #8BC462;
+}
+.marking-cube.black{
+    background-color: #58AF50;
+}
+
+
+.snake-part{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: blue;
+    z-index: 4;
+}
+
+.snake-part.head{
+    z-index: 5;
+}
+
+.snake-part .face{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 6;
+}
+
+.snake-part.head .face .eyes{
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    transform: translate(-50%, -50%);
+    background-color: blue;
+}
+.snake-part.head .face .eyes img{
+    max-width: 100%;
+}
+
+.snake-part.head .face .muzzle{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: blue;
+}
+
+/* .snake-part.head .face .tongue{
+    background-color: red;
+    width: 100%;
+    height: 6px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(120%, -50%);
+} 
+
+.snake-part.head .face::after{
+    content: "";
+    background-color: #6CBB3C;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px 10px 0px 0px;
+    position: absolute;
+    display: block;
+    top: 0;
+    right: 0;
+    transform: translate(50%, 0) rotate(90deg);
+} */
+
+#food{
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#food::before{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: green;
+    border-radius: 0 50% 0 50%;
+    top: 0;
+    left: 40%;
+    transform: translate(-50%, -70%);
+}
+
+.count{
+    font-size: 48px;
+    text-align: center;
+    font-weight: 700;
+}
