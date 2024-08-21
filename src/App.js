@@ -117,64 +117,11 @@ function App() {
     }
     }
     
-    let xDown = null;                                                        
-    let yDown = null;
-
-    function getTouches(evt) {
-      return evt.touches ||             // browser API
-            evt.originalEvent.touches; // jQuery
-    }                                                     
-                                                                          
-    function handleTouchStart(evt) {
-        const firstTouch = getTouches(evt)[0];                                      
-        xDown = firstTouch.clientX;                                      
-        yDown = firstTouch.clientY;                                      
-    };                                                
-                                                                          
-    function handleTouchMove(evt) {
-        if ( ! xDown || ! yDown ) {
-            return;
-        }
-
-        var xUp = evt.touches[0].clientX;                                    
-        var yUp = evt.touches[0].clientY;
-
-        var xDiff = xDown - xUp;
-        var yDiff = yDown - yUp;
-                                                                            
-        if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
-            if ( xDiff > 0 ) {
-              clearTimeout(timeoutId);
-              setDirection(d => (d[0] !== "RIGHT" ? [...d, "LEFT"] : d));
-            } else {
-              clearTimeout(timeoutId);
-              setDirection(d => (d[0] !== "LEFT" ? [...d, "RIGHT"] : d));
-            }                       
-        } else {
-            if ( yDiff > 0 ) {
-              clearTimeout(timeoutId);
-              setDirection(d => (d[0] !== "BOTTOM" ? [...d, "TOP"] : d)); 
-            } else { 
-              clearTimeout(timeoutId);
-              setDirection(d => (d[0] !== "TOP" ? [...d, "BOTTOM"]: d));
-            }                                                                 
-        }                                            
-    };
     if(!mobileAndTabletCheck()){
       document.addEventListener("keydown", handleMove, false);
-    }else{
-      document.addEventListener('touchstart', handleTouchStart, false);        
-      document.addEventListener('touchmove', handleTouchMove, false);
     }
     return () => {
       document.removeEventListener("keydown", handleMove, false);
-      document.removeEventListener('touchstart', handleTouchStart, false);   
-      
-      /* reset values */
-      xDown = null;
-      yDown = null;
-
-      document.removeEventListener('touchmove', handleTouchMove, false);
       clearTimeout(timeoutId);
     }
   }, [snake]);
@@ -196,10 +143,38 @@ function App() {
         <Border borderDimensions={borderDimensions} className="start">
           <div className="start-panel">
             <h1>Snake Game</h1>
+            {mobileAndTabletCheck() ?
+            <p>Click on the <span>SCREEN</span> to start the game</p> :
             <p>Press <span>ENTER</span> to start the game</p>
+            }
           </div>
         </Border>
         }
+        {mobileAndTabletCheck() ?
+        <div className="controler" onClick={startGame ? (e) =>{
+          if(e.target.closest(".controler-button")){
+            let keyCode = +e.target.dataset.keyCode;
+            if (keyCode === 37) {
+              clearTimeout(timeoutId);
+              setDirection(d => (d[0] !== "RIGHT" ? [...d, "LEFT"] : d));
+            } else if (keyCode === 38) {
+              clearTimeout(timeoutId);
+              setDirection(d => (d[0] !== "BOTTOM" ? [...d, "TOP"] : d));
+            } else if (keyCode === 39) {
+              clearTimeout(timeoutId);
+              setDirection(d => (d[0] !== "LEFT" ? [...d, "RIGHT"] : d));
+            } else if (keyCode === 40) {
+              clearTimeout(timeoutId);
+              setDirection(d => (d[0] !== "TOP" ? [...d, "BOTTOM"]: d));
+            }
+          }
+        } : null}>
+          <div className="controler-top controler-button" data-key-code="38">↑</div>
+          <div className="controler-left controler-button" data-key-code="37">←</div>
+          <div className="controler-right controler-button" data-key-code="39">→</div>
+          <div className="controler-bottom controler-button" data-key-code="40">↓</div>
+        </div>
+        : null}
         </div>
       </div>
     </div>

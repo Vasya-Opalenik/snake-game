@@ -12,6 +12,7 @@
 }
 .conteiner{
     padding-top: 50px;
+    padding-bottom: 50px;
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -127,29 +128,39 @@
     background-color: blue;
 }
 
-/* .snake-part.head .face .tongue{
-    background-color: red;
+.controler{
+    max-width: 500px;
     width: 100%;
-    height: 6px;
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translate(120%, -50%);
-} 
-
-.snake-part.head .face::after{
-    content: "";
-    background-color: #6CBB3C;
-    width: 100%;
-    height: 100%;
-    border-radius: 10px 10px 0px 0px;
-    position: absolute;
-    display: block;
-    top: 0;
-    right: 0;
-    transform: translate(50%, 0) rotate(90deg);
-} */
-
+    display: grid;
+    grid-template-areas: "top top"
+                         "left right"
+                        "bottom bottom";
+}
+.controler-button{
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #005500;
+    font-size: 32px;
+    font-weight: 700;
+    background-color: #8BC462;
+    border: 5px solid #005500;
+}
+.controler-top{
+    grid-area: top;
+}
+.controler-left{
+    grid-area: left;
+}
+.controler-right{
+    grid-area: right;
+}
+.controler-bottom{
+    grid-area: bottom;
+}
 #food{
     background-color: red;
     border-radius: 50%;
