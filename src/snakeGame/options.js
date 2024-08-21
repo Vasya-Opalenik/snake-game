@@ -1,8 +1,8 @@
-const unitSize = window.innerWidth > 560 ? 25 : (window.innerWidth - 20) / 20;
-const velocity = window.innerWidth > 560 ? 25 : (window.innerWidth - 20) / 20;
+const unitSize = window.innerWidth > 560 ? 25 : 15;
+const velocity = window.innerWidth > 560 ? 25 : 15;
 const borderDimensions = window.innerWidth > 560 ? {
     width: 500,
     height: 500,
-} : {width: (window.innerWidth - 20), height: (window.innerWidth - 20)}
+} : {width: 300, height: 300};
 
 export {unitSize, velocity, borderDimensions};

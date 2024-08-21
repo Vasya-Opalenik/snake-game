@@ -2,7 +2,6 @@ import { useState } from "react"
 import { unitSize } from "./options"
 export default function Border({children, borderDimensions, className}){
     const [borderRow, setBorderMarking] = useState(new Array(borderDimensions.width / unitSize).fill(new Array(borderDimensions.width / unitSize).fill(null)));
-    
     return (
         <div className={className ? "border-game " + className : "border-game"} style={{
             width: borderDimensions.width + "px",

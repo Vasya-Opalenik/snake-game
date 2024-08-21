@@ -20,6 +20,7 @@ function App() {
     if(direction === "RIGHT") head.x = head.x + velocity;
     if(direction === "BOTTOM") head.y = head.y + velocity;
     if(snake[0].x === foodPosition.x && snake[0].y === foodPosition.y){
+      console.log(2);
       setfoodPosition({
         x: getRandomPosition(0, borderDimensions.width - unitSize), 
         y: getRandomPosition(0, borderDimensions.height - unitSize)
