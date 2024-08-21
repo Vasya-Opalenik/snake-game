@@ -145,10 +145,10 @@ function App() {
         if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
             if ( xDiff > 0 ) {
               clearTimeout(timeoutId);
-              setDirection(d => (d[0] !== "LEFT" ? [...d, "RIGHT"] : d));
+              setDirection(d => (d[0] !== "RIGHT" ? [...d, "LEFT"] : d));
             } else {
               clearTimeout(timeoutId);
-              setDirection(d => (d[0] !== "RIGHT" ? [...d, "LEFT"] : d));
+              setDirection(d => (d[0] !== "LEFT" ? [...d, "RIGHT"] : d));
             }                       
         } else {
             if ( yDiff > 0 ) {
